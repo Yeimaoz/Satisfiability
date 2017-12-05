@@ -9,7 +9,7 @@ CXX = g++
 -DDEBUG
 # Optimizing flags
 CXXFLAGS = -Wall -Wold-style-cast -Wformat=2 -ansi -pedantic -O3
-
+CXXVERSIONFLAGS = --std=c++11
 # Source files destination
 SRC ?= src
 
@@ -28,7 +28,7 @@ all: $(BUILDDIR) $(BUILDDIR)/$(EXENAME)
 
 # Compile %.cpp file to %.o
 $(BUILDDIR)/%.o: $(SRC)/%.cpp
-	$(CXX) $< -c -o $@
+	$(CXX) $(CXXVERSIONFLAGS) $< -c -o $@
 
 # Compile the execution file with all objs
 build/$(EXENAME): $(foreach objs, $(OBJS), $(BUILDDIR)/$(objs))
