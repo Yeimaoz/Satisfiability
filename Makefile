@@ -17,7 +17,7 @@ SRC ?= src
 BUILDDIR ?= build
 
 # List all the .o files you need to build here
-OBJS = parser.o sat.o
+OBJS = Main.o Parser.o SatSolver.o
 
 # This is the name of the executable file that gets built.  Please
 # don't change it.
