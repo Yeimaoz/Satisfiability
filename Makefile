@@ -16,15 +16,19 @@ SRC ?= src
 # Object files destination
 BUILDDIR ?= build
 
-# List all the .o files you need to build here
+# List all the object files you need to build here
 OBJS = Main.o Parser.o SatSolver.o
 
 # This is the name of the executable file that gets built.  Please
 # don't change it.
 EXENAME=solver
 
+.PHONY: all clean test
 
 all: $(BUILDDIR) $(BUILDDIR)/$(EXENAME)
+
+test: 
+	./build/solver benchmarks/SAT/sanity/sanity3.cnf	
 
 # Compile %.cpp file to %.o
 $(BUILDDIR)/%.o: $(SRC)/%.cpp
