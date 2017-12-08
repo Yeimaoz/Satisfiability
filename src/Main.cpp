@@ -16,10 +16,9 @@ int main(int argc, char* argv[]){
     } 
     solver.LoadCNF(argv[1]);
     solver.ShowCNF();
-
-    solver.DavisPutman();
-    solver.DavisPutman();
-    solver.DavisPutman();
+    char key;
+    while ( cin.get() )
+        solver.DavisPutman();
     return 0;
 }
 

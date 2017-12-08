@@ -115,17 +115,17 @@ void SatSolver::SortClause(){
             if ( lhs.size() < rhs.size() )
                 return true;
             else if ( lhs.size() == rhs.size() ){
-                    
-                for ( size_t i = 0 ; i < lhs.size() ; ++i ) {
-                    if ( lhs[i] == rhs[i] )
-                        return true;
-                }
                 for ( size_t i = 0 ; i < lhs.size() ; ++i ){
-                    if ( abs(lhs[i]) < abs(rhs[i]) )
+                    if ( lhs[i] < rhs[i] )
                         return true;
-                }                
+                    else if ( lhs[i] == rhs[i] )
+                        continue;
+                    else
+                        return false;
+                }
             }
-            return false;
+            else
+                return false;
         }
     );
 }
