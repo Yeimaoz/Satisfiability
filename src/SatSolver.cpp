@@ -19,19 +19,21 @@ void SatSolver::DavisPutman(){
             if ( clauses[i] != clauses[j] ){
                 CLAUSE temp;
                 bool completed = false;
-                for ( size_t m = 0; m < clauses[i].size(); ++m ){
-                    for ( size_t n = 0 ; n < clauses[j].size(); ++n ){
-                        if ( !(clauses[i][m]+clauses[j][n]) ){
-                            temp = Combine(clauses[i],clauses[j]);
-                            usedClause[i] = true;
-                            usedClause[j] = true;
-                            completed = true;
+                if ( !(usedClause[i]&&usedClause[j]) ){
+                    for ( size_t m = 0; m < clauses[i].size(); ++m ){
+                        for ( size_t n = 0 ; n < clauses[j].size(); ++n ){
+                            if ( !(clauses[i][m]+clauses[j][n]) ){
+                                temp = Combine(clauses[i],clauses[j]);
+                                usedClause[i] = true;
+                                usedClause[j] = true;
+                                completed = true;
+                                break;
+                            }
+                        }    
+                        if ( completed )
                             break;
-                        }
-                    }    
-                    if ( completed )
-                        break;
-                }       
+                    }       
+                }
                 if ( !temp.empty() )
                     update.push_back(temp);
             }
